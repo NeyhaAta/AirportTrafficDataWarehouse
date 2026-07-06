@@ -176,6 +176,7 @@ End Users — airport and airline stakeholders who interact with the dashboards 
 
 How the components interact. Data flows in one direction: API → Ingestion → Bronze → Transformation → Silver → Curated Data (Gold) → Data Warehouse → BI → Users. On each scheduled run, new flight data from the API updates the Bronze layer and propagates downstream, so the dashboards always reflect the latest air-traffic activity.
 
+## D. Modeling
 Dimensional Modeling 
 Explain the dimensional modeling
 - Example:
@@ -185,7 +186,190 @@ Explain the dimensional modeling
 *Include any necessary images or diagrams to clarify the architecture.*
   - ![Dimensional Modeling Diagram](path_to_image)
 
+<img width="499" height="317" alt="Screenshot 2026-07-06 at 2 44 41 PM" src="https://github.com/user-attachments/assets/304dcdef-4072-4ecb-af68-65a1e83bf7b7" />
+
+## E. Methodology and Implementation
+
+The project followed an Agile approach because the data warehouse was developed in multiple stages. The team worked through data collection, cleaning, modeling, visualization, and testing. This allowed each part of the project to be tested before moving to the next stage.
+
+### Project Phases
+
+#### Sprint 1: Setup and Data Collection
+The first phase focused on setting up the GitHub repository, Azure storage, and the Python development environment. The raw flight data was transferred from the Google Cloud Storage source into the Azure Bronze storage layer.
+
+#### Sprint 2: Data Processing and Cleaning
+The raw flight data was processed using Python and pandas. Nested flight records were flattened into columns, incomplete records were handled, duplicate records were removed, and data types were standardized. The cleaned dataset was stored as `flights_cleaned.csv` in the Silver layer.
+
+#### Sprint 3: Data Modeling
+The cleaned flight data was organized into a dimensional model. A star schema was created with a central flight fact table and dimensions for airport, airline, aircraft, and date. This structure allows the data to be analyzed from different perspectives.
+
+#### Sprint 4: Visualization and Testing
+Python, pandas, and Matplotlib were used to create visualizations from the cleaned flight dataset. The results were tested by comparing calculated totals and KPIs with the source data. The visualization outputs were saved in the `visualizations` folder.
+
+### Metadata Management
+
+The project uses metadata to document the meaning, format, and source of the data used in the warehouse.
+
+#### Main Fact Table
+
+The `fact_flights` table stores flight-level information, including:
+
+- Flight date
+- Flight number
+- Flight status
+- Departure airport
+- Arrival airport
+- Airline
+- Aircraft
+- Departure delay
+- Arrival delay
+- Scheduled departure and arrival times
+- Actual departure and arrival times
+
+#### Dimension Tables
+
+- `dim_airport`: Stores airport information such as IATA code, ICAO code, and airport name.
+- `dim_airline`: Stores airline name, IATA code, and ICAO code.
+- `dim_aircraft`: Stores aircraft registration and aircraft type information.
+- `dim_date`: Stores date, year, month, month name, day of week, and weekend indicators.
+
+### Source-to-Target Mapping
+
+The original AviationStack data contains nested flight, airline, aircraft, departure, and arrival information. The data was flattened and mapped into the Silver dataset. The cleaned fields were then used to create the Gold fact and dimension tables.
+
+Examples include:
+
+- `flight_date` → `dim_date`
+- `flight_status` → `fact_flights`
+- `airline_name` → `dim_airline`
+- `aircraft_registration` → `dim_aircraft`
+- `dep_iata` → departure airport
+- `arr_iata` → arrival airport
+- `dep_delay` → departure delay measure
+
+### Main Functions
+
+The project uses Python functions and transformation steps to move and process data.
+
+- `list_gcs_objects()` lists objects available in the source Google Cloud Storage bucket.
+- `make_blob_name()` creates the destination path for files transferred to Azure.
+- `transfer()` transfers source data into Azure Blob Storage.
+- `build_container_client()` connects to the Azure storage container.
+- `flatten_record()` converts nested flight records into a flat tabular format.
+
+The visualization script reads the cleaned flight dataset, calculates KPIs, groups flight records by different categories, and generates charts.
+
+### ETL and ELT
+
+The project uses a combination of ETL and ELT.
+
+**ELT (Extract, Load, Transform):** Raw flight data is extracted from the source and loaded into the Bronze layer before transformation. This preserves the original data.
+
+**ETL (Extract, Transform, Load):** Data is extracted from Bronze, cleaned and transformed using Python, and loaded into the Silver layer. The cleaned data is then transformed into fact and dimension tables for the Gold layer.
+
+### Tools Used
+
+- Python
+- pandas
+- Matplotlib
+- Google Cloud Storage
+- Azure Blob Storage
+- Google Colab
+- Git
+- GitHub
+- Power BI
 
 
+## F. Visualization
+
+Python, pandas, and Matplotlib were used to analyze the cleaned flight dataset and generate visualizations. The charts were created by the `airport_visualizations.py` script and saved in the `visualizations` folder.
+
+### Departures by Airport
+
+This visualization compares total flight departures between JFK, LGA, and ISP.
+
+![Departures by Airport](visualizations/01_departures_by_airport.png)
+
+### Cancellation Rate by Airport
+
+This chart compares the percentage of cancelled flights at each airport.
+
+![Cancellation Rate by Airport](visualizations/02_cancellation_rate_by_airport.png)
+
+### Top Airlines by Departures
+
+This chart identifies the airlines with the highest number of departures across the three-airport system.
+
+![Top Airlines by Departures](visualizations/03_top_airlines_by_departures.png)
+
+### Departures by Month
+
+This visualization shows changes in flight activity over time.
+
+![Departures by Month](visualizations/04_departures_by_month.png)
+
+### Airlines with the Highest Cancellation Rates
+
+This chart compares cancellation rates among airlines with a significant number of flights.
+
+![Airline Cancellation Rates](visualizations/05_highest_airline_cancellation_rates.png)
+
+### Departures by Season
+
+This visualization compares flight activity during Winter, Spring, Summer, and Fall.
+
+![Departures by Season](visualizations/06_departures_by_season.png)
+
+### Departures by Day of Week
+
+This chart compares flight activity across the days of the week.
+
+![Departures by Day](visualizations/07_departures_by_day_of_week.png)
+
+### Average Departure Delay by Airport
+
+This visualization compares average departure delays between JFK, LGA, and ISP.
+
+![Average Departure Delay](visualizations/08_average_departure_delay_by_airport.png)
 
 
+## G. Insights
+
+The analysis of 987,728 flight records produced several important findings:
+
+- JFK had the highest flight volume with 733,903 departures, representing approximately 74% of the flights in the dataset.
+- LGA recorded 247,288 departures, while ISP recorded 6,537 departures.
+- LGA had the highest cancellation rate, while ISP had the lowest cancellation rate.
+- Delta had the highest overall departure volume across the three airports.
+- Flight activity was relatively stable throughout the week, although Saturday had the lowest number of departures.
+- Spring had the highest flight volume among the four seasons.
+- Average departure delay was highest at JFK and lowest at ISP.
+- High flight volume did not always result in a high cancellation rate. Some high-volume airlines maintained cancellation rates close to the overall average.
+
+The project also identified data quality limitations. Arrival delay contained unrealistic outlier values, aircraft information was missing for many records, and some months had incomplete data coverage. Because of these limitations, departure delay was used as the primary measure for delay analysis.
+
+
+## H. Conclusion
+
+The project successfully developed an aviation data warehouse solution for analyzing flight activity at JFK, LGA, and ISP airports. Flight data was moved through Bronze, Silver, and Gold data layers and organized into a dimensional model for analysis and reporting.
+
+The project also produced Python-based visualizations that answer important business questions related to airport traffic, airline activity, cancellations, seasonal patterns, and departure delays. The results show that JFK dominates total flight volume, LGA has the highest airport cancellation rate, and flight activity patterns differ across airports and airlines.
+
+The results can help airport managers, airline managers, and data analysts better understand traffic patterns and compare operational performance. Future improvements could include automating the data pipeline, adding additional airport and aircraft reference data, improving arrival-delay data quality, and developing additional interactive Power BI dashboards.
+
+
+## I. References
+
+1. *AviationStack — Real-Time Flight Status & Global Aviation Data API*. APILayer, 2025.
+
+2. *pandas: Python Data Analysis Library*. The pandas Development Team, 2025.
+
+3. *Matplotlib: Visualization with Python*. The Matplotlib Development Team, 2025.
+
+4. *Azure Blob Storage Documentation*. Microsoft, 2025.
+
+5. *Google Cloud Storage Documentation*. Google, 2025.
+
+6. *Power BI Documentation*. Microsoft, 2025.
+
+7. Kimball, Ralph, and Margy Ross. *The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling*. 3rd ed., Wiley, 2013.
