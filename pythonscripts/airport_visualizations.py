@@ -1,19 +1,5 @@
 """
 Airport Traffic Data Warehouse - Visualization Code
-CIS 4400 Project 8
-
-What this script does:
-1. Reads your Gold Excel workbook or a cleaned Silver CSV.
-2. Joins fact_flights to dim_airport, dim_airline, and dim_date if using Gold tables.
-3. Creates the charts used in Sections F/G of the report.
-4. Saves chart PNG files into the /visualizations folder.
-
-How to run:
-    pip install pandas matplotlib openpyxl
-    python airport_visualizations.py --input AviationDW_Gold.xlsx
-
-Or, if using the Silver CSV:
-    python airport_visualizations.py --input flights_cleaned.csv
 """
 
 from __future__ import annotations
