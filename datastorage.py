@@ -1,4 +1,4 @@
-Public GCS bucket → Azure Blob Storage (Google Colab)
+'''Public GCS bucket → Azure Blob Storage (Google Colab)
 Copies objects from a public Google Cloud Storage bucket (no GCP credentials) straight into an Azure Blob container — streaming, nothing is written to the Colab disk.
 
 You specify the bucket, the path, the storage account, and the container in Cell 2.
@@ -8,8 +8,8 @@ How to use
 Run Cell 1 to install the Azure SDK.
 Put your Azure secret in the Colab secret manager (🔑 in the left sidebar) — name it AZURE_STORAGE_KEY (account key) or AZURE_STORAGE_CONNECTION_STRING, and toggle Notebook access on. If neither is set you'll be prompted securely in Cell 3.
 Fill in Cell 2 (bucket / path / account / container).
-Run Cell 4 as a --dry-run first to check the file list, then Cell 5 to copy.
-
+Run Cell 4 as a --dry-run first to check the file list, then Cell 5 to copy.'''
+#
 # Cell 1 — install dependencies (requests ships with Colab)
 !pip install -q azure-storage-blob
      
