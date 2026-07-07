@@ -1,5 +1,5 @@
-Project 8: Data Warehouse setup for Aviation Stack
-Business Requirements:
+## Project 8: Data Warehouse setup for Aviation Stack
+## Business Requirements:
 Analyze the air traffic patterns of the ISP, JFK and LGA
 Functional Requirements:
 Track cancelled flights by airlines,
@@ -8,63 +8,71 @@ Data Requirements:
 Data (provided by the professor).
 Reference data for airports.
 
-Problem Context
+## Problem Context
 Air travel generates large amounts of data every day, including information about flights, airlines, airports, delays, and cancellations. Without a centralized system, it can be difficult to organize this data and identify meaningful trends. This project focuses on building a data warehouse using Aviation Stack data to analyze air traffic patterns at John F. Kennedy International Airport (JFK), LaGuardia Airport (LGA), and Long Island MacArthur Airport (ISP). The goal is to organize flight data into a structured database that supports reporting and business intelligence. By analyzing flight activity and cancellations, the project will help identify traffic trends, compare airport and airline performance, and provide interactive dashboards that support data-driven decision making.
 
-Requirements:
+## Requirements:
 
-Business Requirements
-Compare flight activity between the three airports.
-Identify peak travel periods by day, month, and season.
-Track the total number of flights for each airport.
-Monitor flight cancellations by airline and airport.
-Compare airline performance across the three airports.
-Identify trends in flight arrivals and departures over time.
-Measure airport traffic growth or decline throughout the year.
-Provide dashboards and reports for analyzing air traffic data.
-Support data-driven decision making for airport and airline operations.
-A map of the airports with the most traffic highlighted for month, airline, airplane
-Identify which airlines have the highest and lowest cancellation rates.
-Compare the number of arrivals and departures for each airport.
-Analyze flight activity by airline, airport, and airplane.
-Track cancelled flights over time by day, month, and year.
-Compare flight activity during weekdays and weekends.
-Identify the busiest airlines operating at each airport.
-Provide interactive filters by airport, airline, airplane, month, and year.
-Generate key performance indicators (KPIs) such as total flights, total cancellations, and cancellation rate.
-Identify changes in air traffic patterns over time.
-Centralize aviation data into a single data warehouse for reporting and analysis.
-Analyze flight patterns by season (Winter, Spring, Summer, and Fall).
-Analyze flight patterns by airline, month, and quarter.
-Display a map showing flight concentration based on the selected airline, month, or season.
-Provide charts showing the number of flights by airline.
-Provide charts showing the number of flights by month.
-Provide charts showing the number of flights by airport.
-
-
-Functional Requirements
+## Business Requirements
+* Compare flight activity between the three airports.
+* Identify peak travel periods by day, month, and season.
+* Track the total number of flights for each airport.
+* Monitor flight cancellations by airline and airport.
+* Compare airline performance across the three airports.
+* Identify trends in flight arrivals and departures over time.
+* Measure airport traffic growth or decline throughout the year.
+* Provide dashboards and reports for analyzing air traffic data.
+* Support data-driven decision making for airport and airline operations.
+* A map of the airports with the most traffic highlighted for month, airline, airplane
+* Identify which airlines have the highest and lowest cancellation rates.
+* Compare the number of arrivals and departures for each airport.
+* Analyze flight activity by airline, airport, and airplane.
+* Track cancelled flights over time by day, month, and year.
+* Compare flight activity during weekdays and weekends.
+* Identify the busiest airlines operating at each airport.
+* Provide interactive filters by airport, airline, airplane, month, and year.
+* Generate key performance indicators (KPIs) such as total flights, total cancellations, and cancellation rate.
+* Identify changes in air traffic patterns over time.
+* Centralize aviation data into a single data warehouse for reporting and analysis.
+* Analyze flight patterns by season (Winter, Spring, Summer, and Fall).
+* Analyze flight patterns by airline, month, and quarter.
+* Display a map showing flight concentration based on the selected airline, month, or season.
+* Provide charts showing the number of flights by airline.
+* Provide charts showing the number of flights by month.
+* Provide charts showing the number of flights by airport.
 
 
-Create dashboards to visualize the data.
-Display a map of the airports with the most traffic highlighted by month, airline, and airplane.
-Allow users to filter the data by airport, airline, airplane, month, and year.
-Calculate total flights, total cancellations, and cancellation rates.
-Compare flight activity between JFK, LGA, and ISP.
-Support trend analysis for flight activity and cancellations over time.
-Categorize flight data into Winter, Spring, Summer, and Fall.
-Aggregate flight data by month and quarter.
-Aggregate flight data by airline and airport.
-Generate a map visualizing flight concentration.
-Allow users to filter the map by airline.
-Allow users to filter the map by month.
-Allow users to filter the map by season.
-Generate charts displaying the number of flights per airline.
-Generate charts displaying the number of flights per month.
-Generate charts displaying the number of flights per airport.
-Support interactive filtering across all dashboards and visualizations.
+## Functional Requirements
 
 
-Requirement Analysis
+* Create dashboards to visualize the data.
+* Display a map of the airports with the most traffic highlighted by month, airline, and airplane.
+* Allow users to filter the data by airport, airline, airplane, month, and year.
+* Calculate total flights, total cancellations, and cancellation rates.
+* Compare flight activity between JFK, LGA, and ISP.
+* Support trend analysis for flight activity and cancellations over time.
+* Categorize flight data into Winter, Spring, Summer, and Fall.
+* Aggregate flight data by month and quarter.
+* Aggregate flight data by airline and airport.
+* Generate a map visualizing flight concentration.
+* Allow users to filter the map by airline.
+* Allow users to filter the map by month.
+* Allow users to filter the map by season.
+* Generate charts displaying the number of flights per airline.
+* Generate charts displaying the number of flights per month.
+* Generate charts displaying the number of flights per airport.
+* Support interactive filtering across all dashboards and visualizations.
+
+## Data Requirements
+
+* Data Source: from AviationStack API, real time and historical flight, airline, and airport data.
+* Entities: Star schema including central flight fact table and dimension tables for airport, airline, aircraft, and date
+* Data Ingestion: API data is pulled and put into one file and ingested into a storage
+* Data Cleaning: Remove null values, fix data types, and standardize field formats
+* Data Quality: Ensure unique records and consistent IATA codes
+* Storage Layers: utilize a medallion archiecture (Bronze: raw, Silver: cleaned, Gold: Curated) for organization
+
+## Requirement Analysis
 The data is sourced from an API on the website aviationstack the data provides real time flight status, historical flights, airline routes, airports, aircrafts.
 We then need to ingest the different types of data into a storage.
 Then we reformat the data into proper fields and data types.
@@ -80,20 +88,18 @@ Store airport, airline, aircraft, and flight information.
 Update the data warehouse when new data is received from the API.
 Generate reports from the data warehouse.
 
-Key Questions
-Which airport (JFK, LGA, or ISP) has the highest volume of flights?
-Which airlines operate the most flights at each airport?
-Which airline has the highest number of cancelled flights?
-Which airport experiences the most flight cancellations?
-How do air traffic patterns change by day, month, and season?
-What are the busiest travel periods for each airport?
-Which days of the week have the highest flight activity?
-What is the cancellation rate for each airport?
-How does airline performance compare across JFK, LGA, and ISP?
-What trends can be identified in flight activity over time?
+## Key Questions
+* Which airport (JFK, LGA, or ISP) has the highest volume of flights?
+* Which airlines operate the most flights at each airport?
+* Which airline has the highest number of cancelled flights?
+* Which airport experiences the most flight cancellations?
+* How do air traffic patterns change by day, month, and season?
+* What are the busiest travel periods for each airport?
+* Which days of the week have the highest flight activity?
+* What is the cancellation rate for each airport?
+* How does airline performance compare across JFK, LGA, and ISP?
+* What trends can be identified in flight activity over time?
 
-
-All flights are 85.9% full
 
 
 C. Architecture
