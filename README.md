@@ -130,7 +130,6 @@ Lastly it is pulled from the Gold layer and put into the Data Warehouse and form
   - **Silver**: Cleaned, conformed, and enriched data.
   - **Gold**: Aggregated, business-ready data for analytics and reporting.
 - Include a diagram if helpful.
-  - ![Medallion Architecture Diagram](path_to_image)We 
 
 ### 3. Technical Architecture
 - Define the software and hardware systems involved in the project.
