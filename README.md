@@ -193,7 +193,6 @@ Explain the dimensional modeling
   - ![Dimensional Modeling Diagram](path_to_image)
 
 <img width="499" height="317" alt="Screenshot 2026-07-06 at 2 44 41 PM" src="https://github.com/user-attachments/assets/304dcdef-4072-4ecb-af68-65a1e83bf7b7" />
-<img width="1579" height="977" alt="01_departures_by_airport" src="https://github.com/user-attachments/assets/880205d6-145a-455e-89de-8b6e7c96c02a" />
 
 ## E. Methodology and Implementation
 
