@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="airline flights traffic" database="LogicalDesign" id="b889babc-7e53-480f-b9f0-311741b87900" >
+	<schema name="lgl" >
+		<table name="dim_aircraft" prior="dim_airc" >
+			<column name="aircraft_id" type="INT" mandatory="y" />
+			<column name="regristration" type="VARCHAR" length="20" />
+			<column name="iata_type" type="VARCHAR" length="10" />
+			<column name="icao_type" type="VARCHAR" length="10" />
+			<column name="icao24" type="VARCHAR" length="10" />
+			<index name="pk_dim_aircraft" unique="PRIMARY_KEY" >
+				<column name="aircraft_id" />
+			</index>
+		</table>
+		<table name="dim_airline" prior="dim_air" >
+			<column name="airline_id" type="INT" mandatory="y" />
+			<column name="airline_name" type="VARCHAR" length="30" />
+			<column name="iata" type="VARCHAR" length="10" />
+			<column name="icao" type="VARCHAR" length="10" />
+			<index name="pk_dim_airline" unique="PRIMARY_KEY" >
+				<column name="airline_id" />
+			</index>
+		</table>
+		<table name="dim_airport" prior="dim_airpor" >
+			<column name="airport_id" prior="airport_key" type="INT" mandatory="y" />
+			<column name="iata" type="VARCHAR" length="10" />
+			<column name="icao" type="VARCHAR" length="10" />
+			<column name="airport_name" type="VARCHAR" length="50" />
+			<column name="city" type="VARCHAR" length="50" />
+			<column name="timezone_airport" prior="timezone" type="VARCHAR" length="10" />
+			<column name="country" type="VARCHAR" length="50" />
+			<index name="pk_dim_airport" unique="PRIMARY_KEY" >
+				<column name="airport_id" />
+			</index>
+		</table>
+		<table name="dim_arrival" prior="dim_arr" >
+			<column name="airport_id" type="INT" mandatory="y" />
+			<column name="airport_name" type="VARCHAR" length="20" />
+			<index name="pk_dim_arrival" unique="PRIMARY_KEY" >
+				<column name="airport_id" />
+			</index>
+		</table>
+		<table name="dim_date" prior="dim_" >
+			<column name="date_id" prior="date_key" type="INT" mandatory="y" />
+			<column name="full_date" type="DATE" />
+			<column name="year" type="INT" />
+			<column name="month" type="INT" />
+			<column name="month_name" type="VARCHAR" length="20" />
+			<column name="day_of_week" type="INT" />
+			<column name="day" type="INT" />
+			<column name="is_weekend" type="BOOLEAN" >
+				<comment><![CDATA[1 = weekend
+0 = weekday]]></comment>
+			</column>
+			<index name="pk_dim_date" unique="PRIMARY_KEY" >
+				<column name="date_id" />
+			</index>
+		</table>
+		<table name="fact_flights" prior="fact_flig" >
+			<column name="flight_id" type="INT" mandatory="y" />
+			<column name="date_id" type="INT" mandatory="y" />
+			<column name="airline_id" type="INT" mandatory="y" />
+			<column name="aircraft_id" type="INT" mandatory="y" />
+			<column name="departure_airport_id" type="INT" mandatory="y" />
+			<column name="arrival_airport_id" type="INT" mandatory="y" />
+			<column name="flight_number" type="INT" />
+			<column name="flight_status" type="VARCHAR" length="15" />
+			<column name="departure_delay_min" type="DATETIME" length="50" />
+			<column name="arrival_delay_min" type="DATETIME" length="50" />
+			<column name="scheduled_departure" prior="scheduled_departure_min" type="DATETIME" length="50" />
+			<column name="actual_departure" type="DATETIME" length="50" />
+			<column name="scheduled_arrival" type="DATETIME" length="50" />
+			<column name="actual_arrival" type="DATETIME" length="50" />
+			<column name="departure_terminal" type="VARCHAR" length="20" />
+			<column name="departure_gate" type="INT" />
+			<column name="arrival_terminal" type="VARCHAR" length="20" />
+			<column name="arrival_gate" type="INT" />
+			<column name="baggage_claim" type="VARCHAR" length="10" />
+			<index name="pk_fact_flights" unique="PRIMARY_KEY" >
+				<column name="flight_id" />
+			</index>
+			<fk name="fk_fact_flights_dim_date" to_schema="lgl" to_table="dim_date" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="date_id" pk="date_id" />
+			</fk>
+			<fk name="fk_fact_flights_dim_airline" to_schema="lgl" to_table="dim_airline" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="airline_id" pk="airline_id" />
+			</fk>
+			<fk name="fk_fact_flights_dim_aircraft" to_schema="lgl" to_table="dim_aircraft" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="aircraft_id" pk="aircraft_id" />
+			</fk>
+			<fk name="fk_fact_flights_dim_airport" to_schema="lgl" to_table="dim_airport" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="departure_airport_id" pk="airport_id" />
+			</fk>
+			<fk name="fk_fact_flights_dim_airport_0" to_schema="lgl" to_table="dim_airport" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="arrival_airport_id" pk="airport_id" />
+			</fk>
+		</table>
+	</schema>
+	<diagram_group name="Default" id="ccd8528b-e65a-4aad-83d4-bf87abf2648b" >
+		<diagram name="Default Diagram" id="dc0dc325-5a15-4897-a21f-623102661ebf" show_relation="columns" >
+			<entity schema="lgl" name="dim_aircraft" color="C1D8EE" x="1064" y="646" />
+			<entity schema="lgl" name="dim_airline" color="C1D8EE" x="266" y="703" />
+			<entity schema="lgl" name="dim_airport" color="C1D8EE" x="247" y="342" />
+			<entity schema="lgl" name="dim_date" color="C1D8EE" x="1064" y="342" />
+			<entity schema="lgl" name="fact_flights" color="C1D8EE" x="646" y="475" />
+			<callout x="57" y="57" pointer="Round" >
+				<comment><![CDATA[- Create new entities by right-clicking the diagram. 
+- Double-click entity headers to edit.
+- Get a better understanding of the schema by creating multiple diagrams.
+- Convert the logical design to physical design and deploy it into the database.]]></comment>
+			</callout>
+		</diagram>
+	</diagram_group>
+</project>
