@@ -157,10 +157,10 @@ Storage / Data Lake
 Cloud storage (Azure Data Lake or Amazon S3) 
 Holds the Bronze (raw) and Silver (clean) layers
 Data Warehouse
-Snowflake / Azure Synapse / SQL Server
+Snowflake / Azure Synapse /  Server
 Hosts the gold layer star schema (Fact_Flights + dimensions)
 Transformation Modeling
-SQL / dbt
+ / dbt
 Builds the Silver and Gold models and table relationships
 BI / Visualization
 Power BI or Tableau
@@ -182,7 +182,7 @@ The product is an end-to-end aviation data warehouse and business-intelligence s
 
 Ingestion Service — a Python service that pulls data from the AviationStack API and writes it to the Bronze layer.
 Data Lake — cloud storage that holds the raw (Bronze) and cleaned (Silver) data.
-Transformation Layer — SQL/dbt logic that cleans Bronze into Silver and models Silver into the Gold star schema.
+Transformation Layer — /dbt logic that cleans Bronze into Silver and models Silver into the Gold star schema.
 Data Warehouse — the Gold star schema (Fact_Flights plus dimensions) that acts as the central source of truth.
 BI Layer — Power BI or Tableau dashboards delivering the traffic map, KPIs, and interactive filters.
 End Users — airport and airline stakeholders who interact with the dashboards to answer the project's key questions.
