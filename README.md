@@ -294,49 +294,49 @@ Python, pandas, and Matplotlib were used to analyze the cleaned flight dataset a
 
 This visualization compares total flight departures between JFK, LGA, and ISP.
 
-![Departures by Airport](visualizations/01_departures_by_airport.png)
+<img src="./visualizations/01_departures_by_airport.png" width="700">
 
 ### Cancellation Rate by Airport
 
 This chart compares the percentage of cancelled flights at each airport.
 
-![Cancellation Rate by Airport](visualizations/02_cancellation_rate_by_airport.png)
+<img src="./visualizations/02_cancellation_rate_by_airport.png" width="700">
 
 ### Top Airlines by Departures
 
 This chart identifies the airlines with the highest number of departures across the three-airport system.
 
-![Top Airlines by Departures](visualizations/03_top_airlines_by_departures.png)
+<img src="./visualizations/03_top_airlines_by_departures.png" width="700">
 
 ### Departures by Month
 
 This visualization shows changes in flight activity over time.
 
-![Departures by Month](visualizations/04_departures_by_month.png)
+<img src="./visualizations/04_departures_by_month.png" width="700">
 
 ### Airlines with the Highest Cancellation Rates
 
 This chart compares cancellation rates among airlines with a significant number of flights.
 
-![Airline Cancellation Rates](visualizations/05_highest_airline_cancellation_rates.png)
+<img src="./visualizations/05_highest_airline_cancellation_rates.png" width="700">
 
 ### Departures by Season
 
 This visualization compares flight activity during Winter, Spring, Summer, and Fall.
 
-![Departures by Season](visualizations/06_departures_by_season.png)
+<img src="./visualizations/06_departures_by_season.png" width="700">
 
 ### Departures by Day of Week
 
 This chart compares flight activity across the days of the week.
 
-![Departures by Day](visualizations/07_departures_by_day_of_week.png)
+<img src="./visualizations/07_departures_by_day_of_week.png" width="700">
 
 ### Average Departure Delay by Airport
 
 This visualization compares average departure delays between JFK, LGA, and ISP.
 
-![Average Departure Delay](visualizations/08_average_departure_delay_by_airport.png)
+<img src="./visualizations/08_average_departure_delay_by_airport.png" width="700">
 
 
 ## G. Insights
