@@ -107,10 +107,11 @@ C. Architecture
 ### 1. Information Architecture
 - Describe the structure and flow of the information.
 - Include diagrams or images if necessary. 
-  - ![Information Architecture Diagram](path_to_image)
+
 
 The information architecture describes how flight information moves through the system. Flight data is collected from the Aviation Stack API, while supporting reference data such as airport, airline, aircraft, and geographic information is collected from reference datasets. The information is gathered, cleaned, transformed, and consolidated before being stored in the data warehouse. The processed data is then used to generate reports, interactive dashboards, maps, and visualizations that allow users to analyze air traffic patterns, flight activity, and airline performance at JFK, LGA, and ISP airports. Stakeholders such as airport managers, airline managers, and data analysts can use this information to support data-driven decision making.
 
+<img width="499" height="237" alt="Screenshot 2026-07-07 at 8 56 35 PM" src="https://github.com/user-attachments/assets/ab6e0b3a-c407-46f7-9699-bee5b73146a3" />
 
 
 ### 2. Data Architecture
@@ -118,6 +119,9 @@ The data is sourced from AviationStack API and pulled (ingested) from it and put
 It is pulled/ingested again from the Bronze layer, cleans the data and put into a clean data storage (Silver layer).
 Then it is pulled again from the Silver layer, and put into a Curated Data (Gold layer) where all the data is curated for each user.
 Lastly it is pulled from the Gold layer and put into the Data Warehouse and forms the BI Solution
+
+<img width="498" height="187" alt="Screenshot 2026-07-07 at 8 56 59 PM" src="https://github.com/user-attachments/assets/aaa7c1d0-36d0-4964-8afc-62f653c1c71e" />
+
 
 #### Medallion Architecture (if applicable)
 - If your solution uses a data lake or lakehouse (e.g., Delta Lake, Databricks, Microsoft Fabric, Snowflake), describe how data moves through the medallion layers. Omit this part if it does not apply to your architecture.
@@ -166,6 +170,9 @@ Git / Github
 Manages pipelines and transformation code
 
 Hardware. No dedicated on-premise hardware is required — ingestion, storage, the warehouse, and the BI service all run on cloud infrastructure, while a standard development machine is used to build and test the pipeline.
+
+<img width="502" height="219" alt="Screenshot 2026-07-07 at 8 57 08 PM" src="https://github.com/user-attachments/assets/d84605dc-6b16-48bc-b2e5-71b1498283da" />
+
 
 ### 4. Product Architecture
 - Provide an overview of the product's overall structure.
