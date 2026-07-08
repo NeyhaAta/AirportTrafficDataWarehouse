@@ -193,6 +193,7 @@ Explain the dimensional modeling
   - ![Dimensional Modeling Diagram](path_to_image)
 
 <img width="499" height="317" alt="Screenshot 2026-07-06 at 2 44 41 PM" src="https://github.com/user-attachments/assets/304dcdef-4072-4ecb-af68-65a1e83bf7b7" />
+<img width="1579" height="977" alt="01_departures_by_airport" src="https://github.com/user-attachments/assets/880205d6-145a-455e-89de-8b6e7c96c02a" />
 
 ## E. Methodology and Implementation
 
@@ -294,50 +295,49 @@ Python, pandas, and Matplotlib were used to analyze the cleaned flight dataset a
 
 This visualization compares total flight departures between JFK, LGA, and ISP.
 
-<img src="./visualizations/01_departures_by_airport.png" width="700">
+<img width="1579" height="977" alt="01_departures_by_airport" src="https://github.com/user-attachments/assets/e9dad5b3-f109-4f70-af9c-82b03855ae16" />
 
 ### Cancellation Rate by Airport
 
 This chart compares the percentage of cancelled flights at each airport.
 
-<img src="./visualizations/02_cancellation_rate_by_airport.png" width="700">
+<img width="1580" height="977" alt="02_cancellation_rate_by_airport" src="https://github.com/user-attachments/assets/06619d75-dec9-418a-941d-0a4b679a7b98" />
 
 ### Top Airlines by Departures
 
 This chart identifies the airlines with the highest number of departures across the three-airport system.
 
-<img src="./visualizations/03_top_airlines_by_departures.png" width="700">
+<img width="1774" height="1178" alt="03_top_airlines_by_departures" src="https://github.com/user-attachments/assets/5b54485d-8eae-4d28-befe-12871b6320f8" />
 
 ### Departures by Month
 
 This visualization shows changes in flight activity over time.
 
-<img src="./visualizations/04_departures_by_month.png" width="700">
+<img width="1979" height="978" alt="04_departures_by_month" src="https://github.com/user-attachments/assets/aa586390-dbda-425f-8b6b-d4d176f2ca7e" />
 
 ### Airlines with the Highest Cancellation Rates
 
 This chart compares cancellation rates among airlines with a significant number of flights.
 
-<img src="./visualizations/05_highest_airline_cancellation_rates.png" width="700">
+<img width="1781" height="1178" alt="05_highest_airline_cancellation_rates" src="https://github.com/user-attachments/assets/5abccdf1-299c-449b-b40f-f9a02c4ad160" />
 
 ### Departures by Season
 
 This visualization compares flight activity during Winter, Spring, Summer, and Fall.
 
-<img src="./visualizations/06_departures_by_season.png" width="700">
+<img width="1579" height="976" alt="06_departures_by_season" src="https://github.com/user-attachments/assets/ad2857ef-1bda-4214-a654-14e1aab078c1" />
 
 ### Departures by Day of Week
 
 This chart compares flight activity across the days of the week.
 
-<img src="./visualizations/07_departures_by_day_of_week.png" width="700">
+<img width="1779" height="978" alt="07_departures_by_day_of_week" src="https://github.com/user-attachments/assets/4b92066d-0597-41c3-b576-125d486d1609" />
 
 ### Average Departure Delay by Airport
 
 This visualization compares average departure delays between JFK, LGA, and ISP.
 
-<img src="./visualizations/08_average_departure_delay_by_airport.png" width="700">
-
+<img width="1579" height="977" alt="08_average_departure_delay_by_airport" src="https://github.com/user-attachments/assets/099682bc-1c4a-444b-af2b-59f58421a36a" />
 
 ## G. Insights
 
