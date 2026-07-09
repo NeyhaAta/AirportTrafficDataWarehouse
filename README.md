@@ -196,7 +196,7 @@ Explain the dimensional modeling
   - **Dimension**: include all dimensions
 
 *Include any necessary images or diagrams to clarify the architecture.*
-  - ![Dimensional Modeling Diagram](path_to_image)
+
 
 <img width="499" height="317" alt="Screenshot 2026-07-06 at 2 44 41 PM" src="https://github.com/user-attachments/assets/304dcdef-4072-4ecb-af68-65a1e83bf7b7" />
 
